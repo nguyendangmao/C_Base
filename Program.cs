@@ -4,30 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bai8
+namespace bai7
 {
     class Program
     {
-        static void birtgdaycakecandles(int[] arr)
+        static void minimaxsum(int[] arr)
+          
         {
-            int max = arr[0];
-            int c = 1;
-            for(int i = 1; i < arr.Length; i++)
-            {
-                if (arr[i] > max)
-                {
-                    max = arr[i];
-                    c++;
-                }else if (arr[i] == max)
-                {
-                    c++;
-                }
-            }
-            Console.WriteLine(c);
+            Array.Sort(arr);
+            long min = arr.Take(4).Sum();
+            long max = arr.Skip(1).Sum();
+            Console.WriteLine("sum_min:" + min);
+            Console.WriteLine("sum_max:" + max);
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("moi bann hap so phan tu mang")
+            Console.WriteLine("moi ban nhap so phan tu cua mang:");
             int n = Convert.ToInt32(Console.ReadLine());
             int[] arr = new int[n];
 
@@ -35,7 +27,7 @@ namespace bai8
             {
                 arr[i] = Convert.ToInt32(Console.ReadLine());
             }
-            birtgdaycakecandles(arr);
+            minimaxsum(arr);
             Console.ReadLine();
         }
     }
