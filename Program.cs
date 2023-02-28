@@ -4,31 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bai3
+namespace bai9
 {
     class Program
     {
-        static long aVeryBigSum(long[] ar)
+        public static string timconversion(string s)
         {
-            long sum = 0;
-            for (int i = 0; i < ar.Count(); i++)
+            string AMorPM = s.Substring(8);
+            string gio = s.Substring(0, 2);
+            string phutgiauy = s.Substring(2, 6);
+            if(AMorPM=="AM" && gio == "12")
             {
-                sum += ar[i];
+                gio = "00";
+
+            }else if(AMorPM == "PM")
+            {
+                int sogioPM = int.Parse(gio);
+                if(sogioPM != 12)
+                {
+                    gio = Convert.ToString(12 + sogioPM);
+                }
             }
-            return sum;
+            return gio+phutgiauy;
         }
         static void Main(string[] args)
         {
-            long n = Convert.ToInt32(Console.ReadLine());
-            long[] arr = new long[n];
-
-            for (long i = 0; i < n; i++)
-            {
-                arr[i] = Convert.ToInt32(Console.ReadLine());
-            }
-            long result = aVeryBigSum(arr);
-            Console.WriteLine(result);
-            Console.ReadLine();
+            string s = Console.ReadLine();
+            string kq = timconversion(s);
+            Console.WriteLine(kq);
+            Console.ReadKey();
         }
     }
 }
