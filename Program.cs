@@ -4,50 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bai5
+namespace bai4
 {
     class Program
     {
-        static void plusminus(int[] arr)
+        static int Dia(int[,] arr, int n)
         {
-            int duong = 0;
-            int am = 0;
-            int zero = 0;
-            float length = arr.Length;
-
-           for(int i=0;i<arr.Length;i++)
+            int d1 = 0, d2 = 0;
+            for (int i = 0; i < n; i++)
             {
-                if (arr[i] < 0)
-                {
-                    am++;
-                }else if (arr[i] == 0)
-                {
-                    zero++;
-                }
-                else
-                {
-                    duong++;
-                }
+                d1 += arr[i, i];
+                d2 += arr[i, n - i - 1];
             }
-            Console.WriteLine("ti le duong la:" + duong / length);
-            Console.WriteLine("ti le am la:" + am / length);
-            Console.WriteLine("ti le 0 la:" + zero / length);
-
+            return Math.Abs(d1 - d2);
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("moi ban nhap so phan tu cua mang");
             int n = Convert.ToInt32(Console.ReadLine());
-            int[] arr = new int[n];
-
+            int[,] arr = new int[n, n];
             for (int i = 0; i < n; i++)
             {
-                arr[i] = Convert.ToInt32(Console.ReadLine());
+                for (int j = 0; j < n; j++)
+                {
+                    arr[i, j] = int.Parse(Console.ReadLine());
+                }
             }
-
-            plusminus(arr);
+            Console.WriteLine("ma tran vua nhap la:");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0}\t", arr[i, j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("chenh lech 2 duong cheo la:"+Dia(arr, n));
             Console.ReadLine();
-
         }
     }
 }
