@@ -4,30 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bai1
+namespace bai3
 {
     class Program
     {
-        static int simpleArraySum(int[] arr)
+        static long aVeryBigSum(long[] ar)
         {
-            int tong = 0;
-            foreach (var item in arr)
+            long sum = 0;
+            for (int i = 0; i < ar.Count(); i++)
             {
-                tong += item;
+                sum += ar[i];
             }
-            return tong;
+            return sum;
         }
         static void Main(string[] args)
         {
+            long n = Convert.ToInt32(Console.ReadLine());
+            long[] arr = new long[n];
 
-            int n = Convert.ToInt32(Console.ReadLine());
-            int[] arr = new int[n];
-
-            for (int i = 0; i < n; i++)
+            for (long i = 0; i < n; i++)
             {
                 arr[i] = Convert.ToInt32(Console.ReadLine());
             }
-            int result = simpleArraySum(arr);        
+            long result = aVeryBigSum(arr);
             Console.WriteLine(result);
             Console.ReadLine();
         }
