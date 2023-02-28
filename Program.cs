@@ -4,35 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bai6
+namespace bai5
 {
     class Program
     {
-        static void staircase(int n)
+        static void plusminus(int[] arr)
         {
-            for(int y=n-1;y>=0;y--)
+            int duong = 0;
+            int am = 0;
+            int zero = 0;
+            float length = arr.Length;
+
+           for(int i=0;i<arr.Length;i++)
             {
-                for(int x = 0; x < n; x++)
+                if (arr[i] < 0)
                 {
-                    if (x >= y)
-                    {
-                        Console.Write("#");
-                    }
-                    else
-                    {
-                        Console.Write(" ");
-                    }
+                    am++;
+                }else if (arr[i] == 0)
+                {
+                    zero++;
                 }
-                Console.WriteLine(" ");
+                else
+                {
+                    duong++;
+                }
             }
+            Console.WriteLine("ti le duong la:" + duong / length);
+            Console.WriteLine("ti le am la:" + am / length);
+            Console.WriteLine("ti le 0 la:" + zero / length);
+
         }
         static void Main(string[] args)
         {
-
+            Console.WriteLine("moi ban nhap so phan tu cua mang");
             int n = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[n];
 
-            staircase(n);
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            plusminus(arr);
             Console.ReadLine();
+
         }
     }
 }
