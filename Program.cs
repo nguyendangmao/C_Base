@@ -4,35 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bai9
+namespace bai8
 {
     class Program
     {
-        public static string timconversion(string s)
+        static void birtgdaycakecandles(int[] arr)
         {
-            string AMorPM = s.Substring(8);
-            string gio = s.Substring(0, 2);
-            string phutgiauy = s.Substring(2, 6);
-            if(AMorPM=="AM" && gio == "12")
+            int max = arr[0];
+            int c = 1;
+            for(int i = 1; i < arr.Length; i++)
             {
-                gio = "00";
-
-            }else if(AMorPM == "PM")
-            {
-                int sogioPM = int.Parse(gio);
-                if(sogioPM != 12)
+                if (arr[i] > max)
                 {
-                    gio = Convert.ToString(12 + sogioPM);
+                    max = arr[i];
+                    c++;
+                }else if (arr[i] == max)
+                {
+                    c++;
                 }
             }
-            return gio+phutgiauy;
+            Console.WriteLine(c);
         }
         static void Main(string[] args)
         {
-            string s = Console.ReadLine();
-            string kq = timconversion(s);
-            Console.WriteLine(kq);
-            Console.ReadKey();
+            Console.WriteLine("moi bann hap so phan tu mang")
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            birtgdaycakecandles(arr);
+            Console.ReadLine();
         }
     }
 }
