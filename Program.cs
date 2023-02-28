@@ -1,41 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bai2
+namespace bai3
 {
     class Program
     {
-        static List<int> compareTriplets(List<int> a, List<int> b)
+        static long aVeryBigSum(long[] ar)
         {
-            int A = 0;
-            int B = 0;
-
-            for (int i = 0; i < a.Count; i++)
+            long sum = 0;
+            for (int i = 0; i < ar.Count(); i++)
             {
-                if (a[i] > b[i])
-                {
-                    A++;
-
-                }
-                else if (a[i] < b[i])
-                {
-                    B++;
-                }
+                sum += ar[i];
             }
-            return new List<int> { A, B };
+            return sum;
         }
         static void Main(string[] args)
         {
-            var a = new List<int> { 10, 11, 12, 14, 45 };
-            var b = new List<int> { 8, 15, 10, 12, 55 };
-            var result = compareTriplets(a, b);      
-            Console.WriteLine($"[ {result.ElementAt(0)} , {result.ElementAt(1)}]");
-            Console.ReadKey();
+            long n = Convert.ToInt32(Console.ReadLine());
+            long[] arr = new long[n];
 
+            for (long i = 0; i < n; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            long result = aVeryBigSum(arr);
+            Console.WriteLine(result);
+            Console.ReadLine();
         }
     }
 }
